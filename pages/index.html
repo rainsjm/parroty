@@ -1,0 +1,138 @@
+<div class="container">
+  
+    <div class="row">      
+        <div class="col-md-12" style="text-align:center">
+            <h3 class="text-muted" style="margin-bottom:40px">Signup and login users using email and password </h3>            
+        </div>
+    </div>
+  
+  {{#if user}}
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="alert alert-success">
+        <strong><span class="glyphicon glyphicon-ok"></span> Congrats now you are logged as {{user.email}}!</strong>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin-top:10px">
+    <div class="col-md-12">
+      Great, now you're logged in, we are still in the index.html page but where did all the forms go? </br>
+      Stamplay let your page's HTML be aware of the logged user by using the 
+      <a href="http://handlebars.org" target="_blank">Handlebars</a> syntax as follows: <br/> 
+
+      <pre>\{{#if user}}
+
+  HTML FOR LOGGED ONLY USERS HERE
+
+    \{{else}}
+  
+  HTML FOR GUEST USERS HERE
+
+\{{/if}}</pre>
+    </div>
+  </div>
+  
+  {{else}}
+
+  <div class="row">
+      
+    <div class="col-md-6">
+      
+      <div class="wrapper">
+        <form id="reg-form" action="/api/user/v0/users" method="POST" class="form-signin" data-parsley-validate>       
+          <h3 class="form-signin-heading">Signup</h3>
+          <input type="text" class="form-control" name="email" id="reg-email" placeholder="Email Address" required="" autofocus="" data-parsley-type="email" data-parsley-required data-parsley-email_validate/>      
+          <input type="password" class="form-control" name="password" id="reg-password" placeholder="Password" data-parsley-required>
+          
+          <label class="checkbox">
+            <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+          </label>
+          <button id="reg-button" class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>   
+        </form>
+      </div>    
+    </div>  
+    <div class="col-md-6">
+        <h4>User registration</h4>
+        <p>
+          To create a new user you need to get from him at least an email and a password and then 
+          send this data with <strong>POST</strong> request to the <a href="https://stamplay.com/docs#user" target="_blank">
+          <strong>/api/user/v0/users</strong> endpoint</a>. After a succesfull registration the user will be logged in.<br/>
+
+          The file registration.js show you how to use jQuery to collect data from the form and send it to Stamplay.<br/>
+
+        </p>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-6">
+        <div class="wrapper">
+          <form id="login-form-2" action="/auth/v0/local/login" method="POST" class="form-signin" data-parsley-validate>       
+            <h3 class="form-signin-heading">Login (redirect)</h3>
+            <input type="text" class="form-control" name="email" id="login-email-2" placeholder="Email Address" required="" autofocus="" data-parsley-type="email" data-parsley-required/>                
+            <input type="password" class="form-control" name="password" id="login-password-2" placeholder="Password" data-parsley-required>          
+            
+            <input type="hidden" name="success_url" value="/index">
+            <input type="hidden" name="error_url" value="/no">
+
+            <label class="checkbox">
+              <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+            </label>
+            <button type="submit" class="btn btn-lg btn-primary btn-block" id="login-button-2" >Login</button>   
+          </form>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h4>User Login (with page refresh)</h4>
+        <p>
+          You can login users with a simple html form that sends data with a <strong>POST</strong> request to the 
+          <strong>/auth/v0/local/login</strong> endpoint. The field name must be "email" and "password".<br/>
+          After a succesfull login is redirected to your "/index" page but you can customize this behavior by two more
+          params to the form that can be send as hidden input. <br/>
+          This params are "success_url" and "error_url" to choose where you want to redirect your user after he tries
+          to login.      
+          <br/>
+
+        </p>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      
+      <div class="row">
+        <div class="col-md-12" style="display:none;" id="error-login">
+            <div class="alert alert-danger">
+                <span class="glyphicon glyphicon-remove"></span><strong>Email or password is incorrect!</strong>
+            </div>
+        </div>
+      </div>
+      <div class="wrapper">
+        <form id="login-form" action="/api/user/v0/users" method="POST" class="form-signin" data-parsley-validate>       
+          <h3 class="form-signin-heading">Login</h3>
+          <input type="text" class="form-control" name="email" id="login-email" placeholder="Email Address" required="" autofocus="" data-parsley-type="email" data-parsley-required/>                
+          <input type="password" class="form-control" name="password" id="login-password" placeholder="Password" data-parsley-required>
+          
+          <label class="checkbox">
+            <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+          </label>
+          <button id="login-button" class="btn btn-lg btn-primary btn-block" type="submit">Login</button>   
+        </form>  
+      </div>    
+      </div>
+      <div class="col-md-6">
+        <h4>User Login (without page refresh)</h4>
+        <p>
+          In this second login example we use again jQuery to avoid any page refresh. Is like
+          the signup example but this time the data will be sent to the  <strong>/auth/v0/local/login</strong> endpoint. 
+          The payload attributes name must be "email" and "password".<br/>
+
+          The file login.js show you how to use jQuery to collect data from the form and send it to Stamplay.<br/>          
+          
+
+        </p>
+      </div>
+  </div>    
+
+  {{/if}}

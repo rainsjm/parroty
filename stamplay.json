@@ -1,0 +1,10 @@
+{
+  "appId": "parroty",
+  "apiKey": "3cfc2b0781f2924a0729efd13ec792bfcafa5535a292962b2774c439142d2aa5",
+  "public": "./",
+  "ignore": [
+    "stamplay.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

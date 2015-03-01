@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="https://s3-eu-west-1.amazonaws.com/cdn.stamplay.com/apps/31fd96/dev/assets/favicon.png">
+
+    <title>Parroty</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://s3-eu-west-1.amazonaws.com/cdn.stamplay.com/apps/31fd96/dev/assets/bootstrap.css" rel="stylesheet">
+    
+    <!-- Custom styles for this template -->
+    <link href="https://s3-eu-west-1.amazonaws.com/cdn.stamplay.com/apps/31fd96/dev/assets/jumbotron-narrow.css" rel="stylesheet">
+    <link href="https://s3-eu-west-1.amazonaws.com/cdn.stamplay.com/apps/31fd96/dev/assets/custom-style.css" rel="stylesheet">
+    
+  </head>
+
+  <body>
+
+     <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          
+        </ul>
+        <img src="" width="150px"/>
+        
+      </div>
+    <div class="container">
+  
+
+  <div class="row">
+      
+    <div class="col-md-6">
+      
+      <div class="wrapper">
+        <form id="reg-form" action="/api/user/v0/users" method="POST" class="form-signin" data-parsley-validate>       
+          <h3 class="form-signin-heading">Registration</h3>
+          <input type="text" class="form-control" name="email" id="reg-email" placeholder="Email Address" required="" autofocus="" data-parsley-type="email" data-parsley-required data-parsley-email_validate/>      
+          <input type="password" class="form-control" name="password" id="reg-password" placeholder="Password" data-parsley-required>
+          
+          <label class="checkbox">
+            <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+          </label>
+          <button id="reg-button" class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>   
+        </form>
+      </div>    
+    </div>  
+
+    <div class="col-md-6">
+      
+      <div class="row">
+        <div class="col-md-12" style="display:none;" id="error-login">
+            <div class="alert alert-danger">
+                <span class="glyphicon glyphicon-remove"></span><strong>Email or password is incorrect!</strong>
+            </div>
+        </div>
+      </div>
+      <div class="wrapper">
+        <form id="login-form" action="/api/user/v0/users" method="POST" class="form-signin" data-parsley-validate>       
+          <h3 class="form-signin-heading">Login</h3>
+          <input type="text" class="form-control" name="email" id="login-email" placeholder="Email Address" required="" autofocus="" data-parsley-type="email" data-parsley-required/>                
+          <input type="password" class="form-control" name="password" id="login-password" placeholder="Password" data-parsley-required>
+          
+          <input type="hidden" name="success_url" value="game">
+
+          <label class="checkbox">
+            <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+          </label>
+          <button id="login-button" class="btn btn-lg btn-primary btn-block" ng-click="login()" type="submit">Login</button>   
+        </form>  
+      </div>    
+      </div>
+      
+  </div>  
+
+  
+      <div class="footer">
+        <p>&copy; Parroty <script>document.write(new Date().getFullYear());</script></p>
+      </div>
+
+    </div> <!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script>
+      var _APP_ID = "parroty";
+      var _APP_DOMAIN = "";
+    </script>
+    
+    <script src="https://s3-eu-west-1.amazonaws.com/cdn.stamplay.com/apps/31fd96/dev/assets/jquery-1.11.1.min.js"></script>
+    <script src="https://s3-eu-west-1.amazonaws.com/cdn.stamplay.com/apps/31fd96/dev/assets/parsley.min.js"></script>
+    <script src="https://s3-eu-west-1.amazonaws.com/cdn.stamplay.com/apps/31fd96/dev/assets/bootstrap.min.js"></script>
+    <script src="https://s3-eu-west-1.amazonaws.com/cdn.stamplay.com/apps/31fd96/dev/assets/registration.js"></script>
+    <script src="https://s3-eu-west-1.amazonaws.com/cdn.stamplay.com/apps/31fd96/dev/assets/login.js"></script>
+
+  
+  </body>
+</html>
